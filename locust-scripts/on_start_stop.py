@@ -1,0 +1,15 @@
+from locust import User, task, between
+
+class MyUser(User):
+
+    wait_time = between(1,2)
+
+    def on_start(self):
+        print("I am logging into URL")
+
+    @task
+    def doing_work(self):
+        print("I am doing work")
+
+    def on_stop(self):
+        print("I am logging out")
